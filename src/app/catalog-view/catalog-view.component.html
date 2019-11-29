@@ -1,0 +1,53 @@
+
+<h1>OpenLagecy Catalog</h1>
+
+<div class="container">
+
+    <div class="alert alert-success" *ngIf='message'>{{message}} </div>
+    <div class="alert alert-warning" *ngIf="amountMessage">{{amountMessage}}</div>
+  <table class="table">
+    <thead >
+  <tr>
+    <th>Item Name</th>
+    <th>Amount</th>
+    <th>Inventory Code</th>
+    <th>Update</th>
+    <th>Delete</th>
+    <th>Withdraw</th>
+    <th></th>
+    <th>Deposit</th>
+    <th></th>
+  </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let catalog of catalog">
+        <td>{{catalog.itemName}}</td>
+        <td>{{catalog.amount}}</td>
+        <td>{{catalog.inventoryCode}}</td>
+        <td><button (click)="updateItem(catalog.itemNumber)" class="btn btn-success">Update</button></td>
+        <td><button (click)="deleteItem(catalog.itemNumber)" class="btn btn-danger">Delete</button></td>
+        <td>
+          <input type="number"  name="withdraw" [(ngModel)]="withdrawNumber"  required="required"></td>
+          <td>  <button (click)="withdraw(catalog.itemNumber)" class="btn btn-warning">Withdraw</button>
+        </td>
+        <td>
+          <input type="number" name="deposit"  [(ngModel)]="depositNumber"  required="required"></td>
+          <td><button (click)="deposit(catalog.itemNumber)" class="btn btn-info" >Deposit</button>
+            
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <div class="container">
+    
+    <button (click)="addItem()" class="btn btn-success">Add New Item</button>
+
+  </div>
+
+   <div class="container" *ngIf="welcomeMessageFromServer">
+    <h2>SHALALALA</h2>
+    {{welcomeMessageFromServer}}
+   </div>
+</div>

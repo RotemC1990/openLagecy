@@ -1,0 +1,28 @@
+<h1>Update/Add Item</h1>
+<div class="container">
+
+  <div class="alert alert-warning" *ngIf="catalogForm.invalid">Enter All Fields</div>
+  <div class="alert alert-warning" *ngIf="message">{{message}}</div>
+  <div ng-controller="MyFormController">
+    <form (ngSubmit)="!catalogForm.invalid && checkItemInventoryCode() && saveItem()  " #catalogForm="ngForm">
+
+      <fieldset class="form-group">
+        <label>Item Name</label>
+        <input type="text" [(ngModel)]="catalogItem.itemName" class="form-control" name="itemName" required="required">
+      </fieldset >
+
+      <fieldset class="form-group">
+        <label>Amount</label>
+        <input type="number" [(ngModel)]="catalogItem.amount" class="form-control" name="amount" required="required">
+      </fieldset>
+      
+      <fieldset class="form-group">
+        <label>Inventory Code</label>
+        <input type="number" [(ngModel)]="catalogItem.inventoryCode"  class="form-control" name="inventoryCode" required="required">
+      </fieldset>
+    
+      <button type="submit" class="btn btn-success">Save</button>
+
+    </form>
+  </div>
+</div>
